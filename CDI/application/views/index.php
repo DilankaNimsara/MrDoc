@@ -4,15 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Index</title>
-	<?php include 'header.php';
-	/*
-	function title(){
-		$name="2";
-		return $name;
-	}
-*/
-
-	?>
+	<?php include 'header.php';?>
 	<style>
 		img{
 			padding-left: 1%;

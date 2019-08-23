@@ -37,7 +37,7 @@
 					<?php
 					// user icon image
 					if($this->session->userdata('username') != ''){?>
-						<img src="<?php echo base_url('public/img/user.png')?>" alt="Avatar" class="avatar"><?php
+						<img src="<?php echo base_url('public/img/user.png');?>" alt="Avatar" class="avatar"><?php
 					}
 					?>
 				</div>

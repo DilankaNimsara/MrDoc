@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<td><a href="#"><img width="30%" src="<?php echo  base_url('public/img/upload.png'); ?>"><button type="button" class="btn btn-secondary"> Upload Documents</button></td>
-		<td><a href="#"><img width="25%" src="<?php echo  base_url('public/img/manage.png'); ?>"><button type="button" class="btn btn-secondary"> Manage Accounts</button></td>
+		<td><a href="<?php echo base_url('Home/manageAccount');?>"><img width="25%" src="<?php echo  base_url('public/img/manage.png'); ?>"><button type="button" class="btn btn-secondary"> Manage Accounts</button></td>
 	</tr>
 	</tbody>
 

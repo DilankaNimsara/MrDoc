@@ -3,15 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>View Document</title>
-	<?php include 'header.php';
-
-	function title(){
-		$name="1";
-		return $name;
-	}
-
-
-	?>
+	<?php include 'header.php';?>
 </head>
 <body>
 	<div class="col-sm-2">

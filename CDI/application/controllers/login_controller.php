@@ -20,7 +20,7 @@ class login_controller extends CI_Controller
 
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-
+			//-----------------------------------
 			$this->load->model('user_model');
 			if ($this->user_model->can_login($username, $password)) {
 				$session_data = array(
@@ -34,6 +34,7 @@ class login_controller extends CI_Controller
 				$this->session->set_flashdata('error', 'Invalid Username and Password');
 				redirect(base_url() . 'login_controller/login');
 			}
+			//--------------------------------------------
 		} else {
 
 			$this->login();
@@ -55,5 +56,7 @@ class login_controller extends CI_Controller
 		session_destroy();
 		redirect(base_url() . 'login_controller/login');
 	}
+
+
 
 }
