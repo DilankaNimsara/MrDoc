@@ -18,7 +18,9 @@ class Home extends CI_Controller{
 	}
 
 	public function manageAccount(){
-		$this->load->view('manageaccount');
+		$this->load->model('user_model');
+		$data["fetch_data"]=$this->user_model->fetch_data();
+		$this->load->view('manageaccount',$data);
 	}
 	public function qacForm(){
 		$this->load->view('qacform');
@@ -26,7 +28,10 @@ class Home extends CI_Controller{
 	public function userForm(){
 		$this->load->view('userform');
 	}
+	public function update_data(){
 
+
+	}
 
 }
 

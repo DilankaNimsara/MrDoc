@@ -16,4 +16,18 @@ class user_model extends CI_Model
 			return false;
 		}
 	}
+
+	function fetch_data()
+	{
+		$query = $this->db->get("user");
+		return $query;
+		//Select * FROM users
+	}
+
+
+
+
+
+
+
 }
