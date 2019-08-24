@@ -38,7 +38,7 @@
 				<li class="<?php //echo $cl;?>"><a href="<?php echo base_url('Home/viewDocument')?>">View Document</a></li>
 				<li><a href="#section2">Edit Document</a></li>
 				<li><a href="#section3">Upload Document</a></li>
-				<li><a href="<?php echo base_url('Home/manageAccount');?>">Manage Accounts</a></li>
+				<li><a href="<?php echo base_url('login_controller/manageAccount');?>">Manage Accounts</a></li>
 			</ul><br>
 		</div>
 </div>
