@@ -20,12 +20,22 @@
 					<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" class="form-control" id="username" name="username" placeholder="Enter username"/>
-						<span class="text-danger"><?php echo form_error('password')?></span>
+						<span class="text-danger"><?php echo form_error('username')?></span>
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>
 						<input type="password" class="form-control" name="password" id="password" placeholder="Enter password"/>
 						<span class="text-danger"><?php echo form_error('password')?></span>
+					</div>
+					<div class="form-group">
+						<label for="type">Account type</label>
+						<select class="form-control" name="type">
+							<option name="type" value="admin">Admin</option>
+							<option name="type" value="QAC">QAC</option>
+							<option name="type" value="User">User</option>
+						</select>
+						<!--<input type="text" class="form-control" name="type" id="type" placeholder="Enter type"/>-->
+						<span class="text-danger"><?php echo form_error('type')?></span>
 					</div>
 					<div class="form-group form-check">
 						<a href="#">Forgot Password?</a>
