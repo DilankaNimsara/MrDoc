@@ -67,7 +67,7 @@
 				<div class="row">
 					<div class="col-4"></div>
 					<div class="col-4 box">
-						<form method="post" action="<?php echo base_url(); ?>login_controller/admin_account_validation">
+						<form method="post" action="<?php echo base_url(); ?>login_controller/admin_account_update_validation">
 
 							<div class="form">
 								<span class="form text-muted container" style="color: #f8fff4;"><h4><center>Change User Name and Password</center></h4></span>
@@ -88,7 +88,7 @@
 									<label for="password">Confirm Password</label>
 									<input type="password" class="form-control" name="new_password" id="password"
 										   placeholder="Re-enter password"/>
-									<span class="text-danger"><?php echo form_error('new_password') ?></span>
+									<span class="text-danger"><?php echo form_error('confirm password') ?></span>
 								</div>
 
 								<center><button type="submit" class="btn btn-primary" name="insert" value="Login">Update
@@ -98,7 +98,7 @@
 						</form>
 
 					</div>
-					<div class="col-4"></div>
+
 				</div>
 
 			</div>

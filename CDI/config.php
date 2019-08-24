@@ -42,7 +42,8 @@
 
 			$sql2 = "CREATE TABLE user(
 		    username VARCHAR(20) NOT NULL PRIMARY KEY,
-		    password VARCHAR(20) NOT NULL
+		    password VARCHAR(20) NOT NULL,
+		    type VARCHAR(20) NOT NULL
 			)";  
 
 			if(mysqli_query($link,$sql2)){
@@ -74,7 +75,7 @@
 				//echo "Someting went wrong";
 			}
 
-			$sql3 = "INSERT INTO user (username,password) VALUES ('$adminname', '$adminpassword')";
+			$sql3 = "INSERT INTO user (username,password,type) VALUES ('$adminname', '$adminpassword','admin')";
 
 			if(mysqli_query($link,$sql3)){
 				//echo "inserted !!";  	

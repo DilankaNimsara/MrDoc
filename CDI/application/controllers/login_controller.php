@@ -24,24 +24,30 @@ class login_controller extends CI_Controller
 			$type = $this->input->post('type');
 			//-----------------------------------
 			$this->load->model('user_model');
+
 			if ($this->user_model->can_login($username, $password,$type)) {
 				$session_data = array(
-					'username' => $username
+					'username' => $username,
+					'type' => $type
 				);
+
 				$this->session->set_userdata($session_data);
 				redirect(base_url() . 'login_controller/enter');
 				$this->session->set_userdata('username');
+				$this->session->set_userdata('type');
 
 			} else {
 				$this->session->set_flashdata('error', 'Invalid Username and Password');
 				redirect(base_url() . 'login_controller/login');
 			}
-			//--------------------------------------------
+
 		} else {
 
 			$this->login();
 		}
+
 	}
+
 
 	public function enter()
 	{
@@ -100,6 +106,7 @@ class login_controller extends CI_Controller
 		}
 	}
 
+
 	public function qacinserted(){
 		$this->qacForm();
 	}
@@ -133,14 +140,14 @@ class login_controller extends CI_Controller
 		}
 	}
 
-	//----------------------------------------------------------------------Admin
-	public function admin_account_validation()
+	//----------------------------------------------------------------------Admin user name and password update
+	public function admin_account_update_validation()
 	{
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('new_password', 'New password', 'required');
+		$this->form_validation->set_rules('confirm password', 'confirm password', 'required');
 
 		if ($this->form_validation->run()) {
 			$this->load->model('user_model');
@@ -149,6 +156,47 @@ class login_controller extends CI_Controller
 		}
 	}
 
+	//-----------------------------------------------------------User Account Update page
+	public function useraccountupdate(){
+		$this->load->view('userAccountUpdate');
+	}
+
+	//------------------------------------------------------------QAC Account Update page
+	public function QACaccountUpdate(){
+		$this->load->view('userAccountUpdate');
+	}
+
+	//----------------------------------------------------------------------Admin user name and password update
+	public function QAC_account_update_validation()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('confirm password', 'confirm password', 'required');
+
+		if ($this->form_validation->run()) {
+			$this->load->model('user_model');
+		}else{
+			$this->QACaccountUpdate();
+		}
+	}
+	//----------------------------------------------------------------------Admin user name and password update
+
+	public function user_account_update_validation()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('confirm password', 'confirm password', 'required');
+
+		if ($this->form_validation->run()) {
+			$this->load->model('user_model');
+		}else{
+			$this->useraccountupdate();
+		}
+	}
 
 
 

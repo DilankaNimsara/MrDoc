@@ -38,11 +38,25 @@
 				<li class="<?php //echo $cl;?>"><a href="<?php echo base_url('Home/viewDocument')?>">View Document</a></li>
 				<li><a href="#section2">Edit Document</a></li>
 				<li><a href="#section3">Upload Document</a></li>
-				<li><a href="<?php echo base_url('login_controller/manageAccount');?>">Manage Accounts</a></li>
+				<?php
+				if($this->session->userdata('type')=='admin'){
+				?>
+					<li><a href="<?php echo base_url()?>login_controller/manageAccount">Manage Accounts</a></li>
+					<?php
+				}elseif ($this->session->userdata('type')=='QAC'){
+					?>
+					<li><a href="<?php echo base_url()?>login_controller/QACaccountUpdate">Account Settings</a></li>
+					<?php
+				}elseif ($this->session->userdata('type')=='User'){
+					?>
+					<li><a href="<?php echo base_url()?>login_controller/useraccountupdate">Account Settings</a></li>
+					<?php
+				}
+				?>
+
+
 			</ul><br>
 		</div>
 </div>
 
 </nav>
-
-

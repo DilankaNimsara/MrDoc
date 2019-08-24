@@ -30,6 +30,7 @@
 					<div class="form-group">
 						<label for="type">Account type</label>
 						<select class="form-control" name="type">
+							<option value="admin" class="text-muted">Select Account Type</option>
 							<option name="type" value="admin">Admin</option>
 							<option name="type" value="QAC">QAC</option>
 							<option name="type" value="User">User</option>
