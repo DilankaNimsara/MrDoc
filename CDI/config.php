@@ -18,6 +18,17 @@
 
 		$adminname=$_POST['adminname'];
 		$adminpassword=$_POST['adminpassword'];
+		$email=$_POST['email'];
+
+		if($adminname==""||$adminpassword==""||$email==""){
+			?>
+			<script>
+		  			alert('All fields are required.');
+		  			window.location.href='config.php';
+		        </script>
+			<?php
+		}else{
+
 
 		$conn=mysqli_connect("localhost","root","");
 		if (!$conn) {
@@ -28,22 +39,17 @@
         	<?php
 		}
 
-		$sql="create database mrdoc";
+		$sql="create database mrdoc121";
 		
 		if (mysqli_query($conn,$sql)) {
-			?>
-			<script>
-				window.location.href='index.php';
-  				alert('Database is created');
-        	</script>
-			<?php
-
-			$link=mysqli_connect("localhost","root","","mrdoc");
+			
+			$link=mysqli_connect("localhost","root","","mrdoc121");
 
 			$sql2 = "CREATE TABLE user(
 		    username VARCHAR(20) NOT NULL PRIMARY KEY,
 		    password VARCHAR(20) NOT NULL,
-		    type VARCHAR(20) NOT NULL
+		    type VARCHAR(20) NOT NULL,
+		    email VARCHAR(100) NOT NULL
 			)";  
 
 			if(mysqli_query($link,$sql2)){
@@ -74,8 +80,8 @@
 		        <?php
 				//echo "Someting went wrong";
 			}
-
-			$sql3 = "INSERT INTO user (username,password,type) VALUES ('$adminname', '$adminpassword','admin')";
+			
+			$sql3 = "INSERT INTO user (username,password,type,email) VALUES ('$adminname', '$adminpassword','admin','$email')";
 
 			if(mysqli_query($link,$sql3)){
 				//echo "inserted !!";  	
@@ -87,6 +93,13 @@
 		        <?php
 			}
 
+			?>
+			<script>
+				window.location.href='index.php';
+  				alert('Database is created');
+        	</script>
+			<?php
+
 
 		}else{
 			?>
@@ -95,6 +108,7 @@
         	</script>
 			<?php
 		}
+	}
 	}
 
 	?>
@@ -109,7 +123,7 @@
 			<td>Database Name</td>
 			<td valign="50">
 				<div class="col-sm-8">
-					<input type="text" class="form-control" placeholder="mrdoc" name="dbname" readonly >
+					<input type="text" class="form-control" placeholder="mrdoc121" name="dbname" readonly >
 				</div>
 			</td>
 		</tr>
@@ -152,10 +166,20 @@
 			<td>Password</td>
 			<td valign="50">
 				<div class="col-sm-8">
-					<input type="text" class="form-control" placeholder="Enter Password" name="adminpassword">
+					<input type="password" class="form-control" placeholder="Enter Password" name="adminpassword">
 				</div>
 			</td>
 		</tr>
+		<tr>
+			<td>E-mail</td>
+			<td valign="50">
+				<div class="col-sm-8">
+					<input type="email" class="form-control" placeholder="Enter E-mail" name="email">
+				</div>
+			</td>
+		</tr>
+		
+		
 		<tr>
 			<td colspan="2" height="100"><center><button type="submit" class="btn btn-primary" name="submit" value="Submit">Create</button></center></td>
 		</tr>

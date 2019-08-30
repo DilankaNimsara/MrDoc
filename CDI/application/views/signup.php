@@ -2,8 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Login</title>
+	<title>Home</title>
 	<?php include 'header.php';?>
+
 </head>
 
 <body>
@@ -13,13 +14,14 @@
 	<div class="row">
 		<div class="col-4 ">
 			<form method="post" action="<?php
-			echo base_url();?>login_controller/login_validation">
-
+			echo base_url();?>login_controller/sign_validation">
+				<br/>
 				<div class="form">
 					<hr>
 					<span style="color: midnightblue;" >
-						<center><h1>Login</h1></center>
+						<center><h1>Create User Account</h1></center>
 					</span>
+
 					<br/>
 					<div class="form-group">
 						<label for="username">Username</label>
@@ -32,22 +34,13 @@
 						<span class="text-danger"><?php echo form_error('password')?></span>
 					</div>
 					<div class="form-group">
-						<label for="type">Account type</label>
-						<select class="form-control" name="type">
-							<option class="text-muted">Select Account Type</option>
-							<option name="type" value="admin">Admin</option>
-							<option name="type" value="QAC">QAC</option>
-							<option name="type" value="User">User</option>
-						</select>
+						<label for="email">E-mail</label>
+						<input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail"/>
+						<span class="text-danger"><?php echo form_error('email')?></span>
+					</div>
 
-						<!--<input type="text" class="form-control" name="type" id="type" placeholder="Enter type"/>-->
-						<span class="text-danger"><?php echo form_error('type')?></span>
-					</div>
-					<div class="form-group form-check">
-						<a href="#">Forgot Password?</a>
-					</div>
-					<center><button type="submit" class="btn btn-primary" name="insert" value="Login">Login</button></center>
-					<hr/>
+					<center><button type="submit" class="btn btn-primary" name="insert" value="Login">Sign Up</button></center>
+					<hr>
 					<span class="text-danger"> <?php echo $this->session->flashdata("error")?></span>
 				</div>
 			</form>
@@ -56,6 +49,6 @@
 	</div>
 
 </div>
+
 </body>
 </html>
-

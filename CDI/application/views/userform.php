@@ -11,28 +11,35 @@
 <div class="col-sm-2">
 	<?php include 'sidenav.php';?>
 </div>
+
+
 <div class="col-sm-10 text-left">
-	<!-- content -->
-	<br/>
-	<div class="container">
-		<div class="btn-group btn-group-justified">
-			<a href="<?php echo base_url('login_controller/manageAccount');?>" class="btn btn-default">Admin Settings</a>
-			<a href="<?php echo base_url('login_controller/qacForm');?>" class="btn btn-default">QAC Settings</a>
-			<div class="btn btn-warning">User Settings</div>
-		</div>
+	<div class="row">
+		<br/>
+		<center><div class="btn-group btn-group-justified " style="width: 95%;">
+			<a href="<?php echo base_url('login_controller/manageAccount');?>" class="btn btn-info">Admin Settings</a>
+			<a href="<?php echo base_url('login_controller/qacForm');?>" class="btn btn-info">QAC Settings</a>
+			<div class="btn btn-primary">User Settings</div>
+		</div></center>
 	</div>
 
+	<!-- content -->
+	<br/>
+	<div class="container-fluid ">
+		<div class="row content">
+	<div class="container">
+		</div>
 	<!--------------------------------------->
 	<div class="container" style="margin-left:auto; width: 500px ">
 
 		<div class="row">
-			<div class="col-4"></div>
-			<div class="col-4 box">
+			<div class="col-4">
 				<form method="post" action="<?php
 				echo base_url();?>login_controller/user_Create_validation">
 
 					<div class="form">
-						<span class="form text-muted container text-primary" style="color: #f8fff4;"><h2><center>Create User Account</center></h2></span>
+						<hr>
+						<span class="form "style="color: midnightblue;"  ><h2><center>Create User Account</center></h2></span>
 						<div class="form-group">
 							<label for="username">Username</label>
 							<input type="text" class="form-control" id="username" name="username" placeholder="Enter username"/>
@@ -43,8 +50,14 @@
 							<input type="password" class="form-control" name="password" id="password" placeholder="Enter password"/>
 							<span class="text-danger"><?php echo form_error('password')?></span>
 						</div>
+						<div class="form-group">
+							<label for="email">E-mail</label>
+							<input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail"/>
+							<span class="text-danger"><?php echo form_error('email')?></span>
+						</div>
 						<br/>
 						<center><button type="submit" class="btn btn-primary" name="insert" value="Login">Create</button></center>
+						<hr>
 						<span class="text-danger"> <?php echo $this->session->flashdata("error")?></span>
 					</div>
 				</form>
@@ -55,6 +68,6 @@
 
 	</div>
 	<!--------------------------------------->
-
+</div>
 </body>
 </html>

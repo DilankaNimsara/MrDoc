@@ -19,8 +19,6 @@
 		if ($this->session->userdata('username') != ''){
 		include 'sidenav.php';
 		}else{ ?>
-
-
 			<?php
 		}?>
 </div>

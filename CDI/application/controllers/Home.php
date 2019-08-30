@@ -17,6 +17,20 @@ class Home extends CI_Controller{
 		$this->load->view('view_document');
 	}
 
+	//------------------------------------------------------------User Guide page
+	public function USG(){
+		$this->load->view('userGuide');
+	}
+
+	//------------------------------------------------------------User Guide page
+	public function Contacts(){
+		$this->load->view('contacts');
+	}
+
+
+
+
+
 
 
 

@@ -28,15 +28,15 @@
 			<?php
 			if($this->session->userdata('type')=='admin'){
 				?>
-				<a href="<?php echo base_url()?>login_controller/manageAccount"><?php $name="Manage Accounts";?>
+				<a href="<?php echo base_url();?>login_controller/manageAccount"><?php $name="Manage Accounts";?>
 				<?php
 			}elseif ($this->session->userdata('type')=='QAC'){
 				?>
-				<a href="<?php echo base_url()?>login_controller/QACaccountUpdate"><?php $name="Account Settings";?>
+				<a href="<?php echo base_url();?>login_controller/QACaccountUpdate"><?php $name="Account Settings";?>
 				<?php
 			}elseif ($this->session->userdata('type')=='User'){
 				?>
-				<a href="<?php echo base_url()?>login_controller/useraccountupdate"><?php $name="Account Settings";?>
+				<a href="<?php echo base_url();?>login_controller/useraccountupdate"><?php $name="Account Settings";?>
 				<?php
 			}
 			?>
