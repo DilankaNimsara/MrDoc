@@ -8,12 +8,12 @@
 
 <body>
 
+
 <div class="container" style="margin-left:auto; width: 500px ">
 
 	<div class="row">
 		<div class="col-4 ">
-			<form method="post" action="<?php
-			echo base_url();?>login_controller/login_validation">
+			<form method="post" action="<?php echo base_url();?>login_controller/login_validation">
 
 				<div class="form">
 					<hr>
@@ -46,10 +46,11 @@
 					<div class="form-group form-check">
 						<a href="#">Forgot Password?</a>
 					</div>
-					<center><button type="submit" class="btn btn-primary" name="insert" value="Login">Login</button></center>
+					<center><button type="submit" class="btn btn-primary" name="submit" value="submit">Login</button></center>
 					<hr/>
 					<span class="text-danger"> <?php echo $this->session->flashdata("error")?></span>
 				</div>
+				<br/><br/><br/><br/><br/><br/>
 			</form>
 
 		</div>
@@ -57,5 +58,6 @@
 
 </div>
 </body>
+<?php include 'footer.php';?>
 </html>
 

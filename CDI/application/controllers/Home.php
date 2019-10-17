@@ -6,13 +6,7 @@ class Home extends CI_Controller{
 	function index(){
 		$this->load->view('index');
 	}
-	//------------------------------------------------------------Menu page
-	public function menupage(){
-		$this->load->view('menu');
-	}
-	//------------------------------------------------------------Menu page
-	//------>login_controller
-	//------------------------------------------------------------View Document page
+
 	public function viewDocument(){
 		$this->load->view('view_document');
 	}
@@ -26,6 +20,13 @@ class Home extends CI_Controller{
 	public function Contacts(){
 		$this->load->view('contacts');
 	}
+
+
+
+
+
+
+
 
 
 

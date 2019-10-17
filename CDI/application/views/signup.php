@@ -19,7 +19,7 @@
 				<div class="form">
 					<hr>
 					<span style="color: midnightblue;" >
-						<center><h1>Create User Account</h1></center>
+						<center><h1>User Sign up</h1></center>
 					</span>
 
 					<br/>
@@ -36,10 +36,10 @@
 					<div class="form-group">
 						<label for="email">E-mail</label>
 						<input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail"/>
-						<span class="text-danger"><?php echo form_error('email')?></span>
+						<span class="text-danger"><?php echo form_error('sendMail')?></span>
 					</div>
 
-					<center><button type="submit" class="btn btn-primary" name="insert" value="Login">Sign Up</button></center>
+					<center><button type="submit" class="btn btn-primary" name="insert" value="signup">Sign Up</button></center>
 					<hr>
 					<span class="text-danger"> <?php echo $this->session->flashdata("error")?></span>
 				</div>
@@ -47,8 +47,9 @@
 
 		</div>
 	</div>
-
+	<br/><br/><br/><br/><br/><br/>
 </div>
 
 </body>
+<?php include 'footer.php';?>
 </html>

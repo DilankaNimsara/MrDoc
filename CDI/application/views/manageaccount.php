@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Manage Account</title>
-	<?php include 'header.php'; ?>
+	<?php include 'header.php';
+	include 'autologout.php';?>
 
 </head>
 <body>
@@ -11,152 +12,121 @@
 	<div class="row content">
 		<div class="col-sm-2 ">
 			<!-- content -->
-			<?php include 'sidenav.php' ?>
+			<nav>
+				<div class="row content">
+					<div class="sidenav hidden-xs">
+                        <h2 style="color: mediumturquoise;"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</h2>
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="<?php echo base_url('Home/index')?>"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span> Home</a></li>
+							<li><a href="<?php echo base_url('Home/viewDocument')?>">View Document <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-search"></span></a></li>
+							<!--<li><a href="<?php echo base_url();?>login_controller/editFile"" > Edit Document <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-edit"></span></a></li>
+							--><li><a href="<?php echo base_url();?>login_controller/uploadFile"> Upload Document<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-upload"></span></a></li>
+							<li class="active"><a href="<?php echo base_url();?>login_controller/manageAccount">Manage Accounts<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
+                            <li><a href="<?php echo base_url()?>login_controller/Document_Settings"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-asterisk"></span> Document Settings</a></li>
+						</ul><br>
+					</div>
+				</div>
+			</nav>
 		</div>
-		<div class="col-sm-7 text-left">
+		<div class="col-sm-10 text-left">
 			<!-- content -->
 			<br/>
-			<div class="btn-group btn-group-justified">
+            <div class="row">
+            <center>
+			<div class="btn-group btn-group-justified" style="width: 95%;">
 				<a class="btn btn-primary">Admin Settings</a>
-				<a href="<?php echo base_url('login_controller/qacForm'); ?>" class="btn btn-info btn-primary">QAC Settings</a>
-				<a href="<?php echo base_url('login_controller/userForm'); ?>" class="btn btn-info">User Settings</a>
+				<a href="<?php echo base_url('login_controller/qacForm'); ?>" class="btn btn-info">Create QAC Accounts</a>
+				<a href="<?php echo base_url('login_controller/userForm'); ?>" class="btn btn-info">Create User Accounts</a>
 			</div>
+            </center>
+            </div>
 			<br/>
 			<h1>User Accounts and Passwords</h1>
 			<br>
-			<!-- search -->
-			<div class="search-container" align="right">
-				<form action="#">
-					<table>
-						<tr>
-							<td><input type="text" placeholder="Search.." name="search" class="form-control"></td>
-							<td style="padding-left: 10px;">
-								<button type="submit" class="btn btn-primary">Search</button>
-							</td>
-						</tr>
-					</table>
-				</form>
-			</div>
-			<!-- search -->
-			<br/>
-			<table align="center" class="table table-hover" style="width: 90%; ">
-				<thead>
-				<tr>
-					<th>User Name</th>
-					<th>Password</th>
-					<th>Account type</th>
-					<th>E-mail</th>
-					<th>Delete</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php
-
-				if ($fetch_data->num_rows() > 0) {
-					foreach ($fetch_data->result() as $row) {
-
-						if ($row->type == 'admin') {
-							echo "<tr bgcolor='mediumturquoise'>";
-						} else {
-							echo "<tr>";
-						}
-						?>
-						<td><?php echo $row->username; ?></td>
-						<td><?php echo $row->password; ?></td>
-						<td><?php echo $row->type; ?></td>
-						<td><?php echo $row->email; ?></td>
-						<?php
-						if ($row->type != 'admin') {
-							?>
-							<td><a href="#" class="delete_data " id="<?php echo $row->username; ?>">Delete</a></td>
-							<?php
-						}else{
-							?>
-							<td><a href="#" class="delete_data " id="<?php echo $row->username; ?>"></a></td>
-							<?php
-						}
-						?>
-
-						</tr>
-						<?php
-					}
-				} else {
-
+			<?php
+			$count=0;
+			if ($fetch_data->num_rows() > 0) {
+				foreach ($fetch_data->result() as $row) {
+					$count=$count+1;
 				}
+			}
+			$countuser=0;
+			if ($fetch_data_user->num_rows() > 0) {
+				foreach ($fetch_data_user->result() as $row) {
+					$countuser=$countuser+1;
+				}
+			}
+			$countqac=0;
+			if ($fetch_data_qac->num_rows() > 0) {
+				foreach ($fetch_data_qac->result() as $row) {
+					$countqac=$countqac+1;
+				}
+			}
+			?>
+			<span align="right"><b>Total number of Accounts - <?php echo $count;?></b></span> (
+			<span style="color: #4b4b4b;">User Accounts - <?php echo $countuser;?></span> |
+			<span style="color: #4b4b4b;">QAC Accounts - <?php echo $countqac;?></span> )
+			<br/><br/>
+			<!-- search -->
+            <div class="container ">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="height: 50px;">Search</span>
+                        <input type="text" name="search_text" id="search_text" placeholder="Search by User Name or Email" class="form-control" style="width: 450px;" />
+                    </div>
+                </div>
 
-				?>
-				</tbody>
-			</table>
-		</div>
 
-		<script>
-            $(document).ready(function () {
-                $('.delete_data').click(function () {
-                    var id = $(this).attr("id");
-                    if (confirm("Are you sure,You want to delete this")) {
-                        window.location = "<?php echo base_url(); ?>login_controller/delete_data/" + id;
-                    } else {
-                        return false;
-                    }
+				<div id="result"></div>
+            </div>
+            <div style="clear:both"></div>
 
-                })
-            });
-		</script>
-
-
-		<!-- content -->
-		<div class="col-sm-3 sidenav1">
-
-			<div class="container" style="margin-left:auto; width: 230px ">
-				<div class="row">
-					<div class="col-4"></div>
-					<div class="col-4">
-						<form method="post"
-							  action="<?php echo base_url(); ?>login_controller/admin_account_update_validation">
-
-							<div class="form">
-								<span class="form container" style="color: #f8fff4;"><h4><center>Change User Name and Password</center></h4></span>
-								<div class="form-group">
-									<label for="username">New Username</label>
-									<input type="text" class="form-control" id="username" name="username"
-										   placeholder="Enter username"/>
-									<span class="text-danger"><?php echo form_error('username') ?></span>
-								</div>
-								<div class="form-group">
-									<label for="password">New Password</label>
-									<input type="password" class="form-control" name="password" id="password"
-										   placeholder="Enter password"/>
-									<span class="text-danger"><?php echo form_error('password') ?></span>
-								</div>
-
-								<div class="form-group">
-									<label for="password">Confirm Password</label>
-									<input type="password" class="form-control" name="new_password" id="password"
-										   placeholder="Re-enter password"/>
-									<span class="text-danger"><?php echo form_error('confirm password') ?></span>
-								</div>
-
-								<center>
-									<button type="submit" class="btn btn-primary" name="insert" value="Login">Update
-									</button>
-									<center>
-										<span
-											class="text-danger"> <?php echo $this->session->flashdata("error") ?></span>
-							</div>
-						</form>
-
-					</div>
-
-				</div>
-
-			</div>
-
+			<br/>
 
 		</div>
+
+
 	</div>
 </div>
-
-
+</div>
+<?php include 'footer.php';?>
 </body>
 </html>
+
+
+<script>
+
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"<?php echo base_url(); ?>live_search/manageAccount",
+                method:"POST",
+                data:{query:query},
+                success:function(data){
+
+                    $('#result').html(data);
+
+                }
+            })
+        }
+
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+
+    });
+</script>
+
 

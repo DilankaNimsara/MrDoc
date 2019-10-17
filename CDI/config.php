@@ -63,12 +63,36 @@
 			}
 
 			$sql1 = "CREATE TABLE fileupload(
-		    file VARCHAR(250) NOT NULL PRIMARY KEY,
-		    category VARCHAR(30) NOT NULL,
+		    file_name VARCHAR(250) NOT NULL PRIMARY KEY,
+		    date_created VARCHAR(30) NOT NULL,
+		    category VARCHAR(100) NOT NULL,
 		    year INT NOT NULL,
+		    semester VARCHAR(30) NOT NULL,
 		    academic_year VARCHAR(70) NOT NULL,
-		    subject_code VARCHAR(70) NOT NULL
-			)";  
+		    subject_code VARCHAR(70) NOT NULL,
+		    author VARCHAR(10) NOT NULL,
+		    comment VARCHAR(250) NOT NULL
+			)";   
+
+			$sql11 = "CREATE TABLE category_data(
+		    id INT NOT NULL ,
+		    category VARCHAR(100) NOT NULL PRIMARY KEY
+			)";
+			mysqli_query($link,$sql11);
+
+				$sqlpg = "CREATE TABLE postgraduate(
+		    id INT NOT NULL ,
+		    category VARCHAR(100) NOT NULL PRIMARY KEY
+			)";
+				mysqli_query($link,$sqlpg);
+
+				$sqlex = "CREATE TABLE external(
+		    id INT NOT NULL ,
+		    category VARCHAR(100) NOT NULL PRIMARY KEY
+			)";
+				mysqli_query($link,$sqlex);
+
+
 
 			if(mysqli_query($link,$sql1)){
 				//echo "Your Table Created !!";  

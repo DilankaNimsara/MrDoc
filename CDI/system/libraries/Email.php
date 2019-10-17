@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * CodeIgniter Email Class
  *
- * Permits email to be sent using Mail, Sendmail, or SMTP.
+ * Permits sendMail to be sent using Mail, Sendmail, or SMTP.
  *
  * @package		CodeIgniter
  * @subpackage	Libraries
@@ -991,7 +991,7 @@ class CI_Email {
 	 */
 	protected function _get_mime_message()
 	{
-		return 'This is a multi-part message in MIME format.'.$this->newline.'Your email application may not support this format.';
+		return 'This is a multi-part message in MIME format.'.$this->newline.'Your sendMail application may not support this format.';
 	}
 
 	// --------------------------------------------------------------------
@@ -1596,7 +1596,7 @@ class CI_Email {
 	/**
 	 * Prep Q Encoding
 	 *
-	 * Performs "Q Encoding" on a string for use in email headers.
+	 * Performs "Q Encoding" on a string for use in sendMail headers.
 	 * It's related but not identical to quoted-printable, so it has its
 	 * own method.
 	 *
@@ -1841,9 +1841,9 @@ class CI_Email {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Validate email for shell
+	 * Validate sendMail for shell
 	 *
-	 * Applies stricter, shell-safe validation to email addresses.
+	 * Applies stricter, shell-safe validation to sendMail addresses.
 	 * Introduced to prevent RCE via sendmail's -f option.
 	 *
 	 * @see	https://github.com/bcit-ci/CodeIgniter/issues/4963
@@ -2400,7 +2400,7 @@ class CI_Email {
 	protected function _set_error_message($msg, $val = '')
 	{
 		$CI =& get_instance();
-		$CI->lang->load('email');
+		$CI->lang->load('sendMail');
 
 		if (sscanf($msg, 'lang:%s', $line) !== 1 OR FALSE === ($line = $CI->lang->line($line)))
 		{

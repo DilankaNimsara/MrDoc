@@ -4,8 +4,7 @@ $actual_link = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 $url= basename($actual_link);
 
 ?>
-
-
+<link rel="icon" href="<?php echo base_url(); ?>/public/img/MR2.png" type="image/gif" sizes="16x16">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -21,7 +20,7 @@ $url= basename($actual_link);
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header" >
-			<a class="navbar-brand" style="color: white;"><b>MrDoc</b></a>
+			<a class="navbar-brand" style="color: white;font-size: 30px;"><b>MrDoc</b></a>
 		</div>
 		<ul class="nav navbar-nav" >
 			<li class="<?php if($url == "index"){echo 'active';} ?>"><a href="<?php echo site_url('Home/index');?>" style="color: white">Home</a></li>
@@ -35,7 +34,7 @@ $url= basename($actual_link);
 					<?php
 					if ($this->session->userdata('username') == ''){ ?>
 						<li class="<?php if($url == "signUp"){echo 'active';} ?>"><a href="<?php echo site_url('login_controller/signUp');?>">
-								<span class="glyphicon glyphicon-new-window" style="color: white;"></span>
+								<!--<span class="glyphicon glyphicon-new-window" style="color: white;"></span>-->
 								<?php
 						echo "<span style='color: #f8fff4'>";
 						echo 'Sign Up';
